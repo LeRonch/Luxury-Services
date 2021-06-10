@@ -1,0 +1,2 @@
+swiftmailer:
+    disable_delivery: ['romain.chatelet.fr@gmail.com']

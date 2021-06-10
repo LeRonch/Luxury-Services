@@ -1,0 +1,58 @@
+{{ form_start(form, {
+             'attr': {'id': 'register-form', 'role': 'form', 'accept-char': 'UTF-8', 'autocomplete': 'off', 'data-parsley-validate': ''}
+         }) }}
+
+
+<input type="hidden" name="_token" value="">
+
+<div class="input-field">
+
+    {{ form_row(form.email, {
+            'attr': {'id': 'email', 'value': '', 'required': '', 'data-parsley-trigger': 'change', 'data-parsley-error-message': 'A valid email address is required.'}
+         }) }}
+
+    
+
+</div>
+
+
+<div class="input-field">
+
+    {{ form_row(form.password, {
+            'attr': {'id': 'password', 'value': '', 'required': '', 'data-parsley-trigger': 'change', 'data-parsley-minlength': '6', 'data-parsley-error-message': 'The password must be at least 6 characters."'}
+         }) }}
+
+   
+
+    <i class="fa fa-eye show-password"></i>
+
+</div>
+
+
+<div class="input-field">
+
+    {{ form_row(form.confirm_password, {
+            'attr': {'id': 'password_confirmation', 'value':'', 'required': '', 'data-parsley-trigger': 'change', 'data-parsley-equalto': '#password', 'data-parsley-error-message': 'Password does not match.'}
+         }) }}
+
+    
+
+    <i class="fa fa-eye show-password"></i>
+
+</div>
+
+
+<div class="checkbox">
+    <input type="checkbox" name="accept-terms" value="1" id="accept-terms" required/>
+    <label for="accept-terms">I have read and I accept the <a href="#!" target="_blank">Terms Of Use</a></label>
+</div>
+
+
+<button type="submit" class="btn btn-lg gradient secondary btn-block waves-effect waves-light mt-20 mb-20">Create an account</button>
+
+
+<div class="links">
+    <a href="/login.html">Already have an account? Click here</a>
+</div>
+
+{{ form_end(form) }}

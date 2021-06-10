@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}InfoAdminClient index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+
+    <h1>InfoAdminClient index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Poste</th>
+                <th>Numero</th>
+                <th>Email</th>
+                <th>Notes</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info_admin_client in info_admin_clients %}
+            <tr>
+                <td>{{ info_admin_client.id }}</td>
+                <td>{{ info_admin_client.name }}</td>
+                <td>{{ info_admin_client.poste }}</td>
+                <td>{{ info_admin_client.numero }}</td>
+                <td>{{ info_admin_client.email }}</td>
+                <td>{{ info_admin_client.notes }}</td>
+                <td>
+                     <a href="{{ path('admin_info_client_edit', {id: info_admin_client.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_info_client_delete', {'id': info_admin_client.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ info_admin_client.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_info_client_new') }}">Create new</a>
+    </div>
+{% endblock %}

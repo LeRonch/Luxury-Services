@@ -1,0 +1,46 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+ {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.reference) }}</div>
+            <div class="col-md-4">{{ form_row(form.notes) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(form.location) }}</div>
+            <div class="col-md-6">{{ form_row(form.closing_date) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(form.salary) }}</div>
+            <div class="col-md-6">{{ form_row(form.job_type_id) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="select">{{ form_row(form.job_category_id) }}</div>
+             <div class="col-md-6" id="select">{{ form_row(form.client_id) }}</div>
+        </div>
+        <div class="row">
+        <div class="col-md-12" id="select">{{ form_row(form.description) }}</div>
+        </div>
+        <div class="checkbox">
+
+                            <label for="accept-terms">
+
+                            {{ form_widget(form.active, {
+                                'attr': {'id': 'accept-terms', 'value': '1', 'required': 'required'}
+                            }) }}
+
+                            {{ form_label(form.active, '', {
+                                'label_attr': {'class': 'agreeTerms'}
+                            }) }}
+
+                        
+
+                            </label>
+
+                        </div>
+             {{ form_rest(form) }}
+        <button class="btn btn-primary">{{ button|default('Enregister') }}</button>
+         {{ form_end(form) }}
+

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Candidate{% endblock %}
+
+{% block body %}
+    <h1>Candidate</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidate.id }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ candidate.gender ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>First_name</th>
+                <td>{{ candidate.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Last_name</th>
+                <td>{{ candidate.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ candidate.adress }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ candidate.country }}</td>
+            </tr>
+            <tr>
+                <th>Nationality</th>
+                <td>{{ candidate.nationality }}</td>
+            </tr>
+            <tr>
+                <th>Passport</th>
+                <td>{{ candidate.passport }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td>{{ candidate.cv }}</td>
+            </tr>
+            <tr>
+                <th>Profil_picture</th>
+                <td>{{ candidate.profilPicture }}</td>
+            </tr>
+            <tr>
+                <th>Current_location</th>
+                <td>{{ candidate.currentLocation }}</td>
+            </tr>
+            <tr>
+                <th>Date_of_birth</th>
+                <td>{{ candidate.dateOfBirth ? candidate.dateOfBirth|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Place_or_birth</th>
+                <td>{{ candidate.placeOrBirth }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ candidate.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('candidate_index') }}">back to list</a>
+
+    <a href="{{ path('candidate_edit', {'id': candidate.id}) }}">edit</a>
+
+    {{ include('candidate/_delete_form.html.twig') }}
+{% endblock %}

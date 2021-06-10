@@ -1,0 +1,61 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}JobOffer index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h1>JobOffer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Active</th>
+                <th>Notes</th>
+                <th>Location</th>
+                <th>Closing_date</th>
+                <th>Salary</th>
+                <th>Date_de_creation</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job_offer in job_offers %}
+            <tr>
+                <td>{{ job_offer.id }}</td>
+                <td>{{ job_offer.reference }}</td>
+                <td>{{ job_offer.active ? 'Yes' : 'No' }}</td>
+                <td>{{ job_offer.notes }}</td>
+                <td>{{ job_offer.location }}</td>
+                <td>{{ job_offer.closingDate ? job_offer.closingDate|date('Y-m-d') : '' }}</td>
+                <td>{{ job_offer.salary }}</td>
+                <td>{{ job_offer.dateDeCreation ? job_offer.dateDeCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ job_offer.title }}</td>
+                <td>
+                 <a href="{{ path('admin_job_offer_edit', {id: job_offer.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_job_offer_delete', {'id': job_offer.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job_offer.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+
+
+                  
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-right">
+            <a href="{{ path('admin_job_offer_new') }}" class="btn btn-primary">Créer un nouveau bien</a>
+        </div>
+
+</div>
+{% endblock %}

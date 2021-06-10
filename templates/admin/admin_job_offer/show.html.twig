@@ -1,0 +1,57 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}JobOffer{% endblock %}
+
+{% block body %}
+    <h1>JobOffer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ job_offer.id }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ job_offer.reference }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ job_offer.active ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ job_offer.notes }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ job_offer.location }}</td>
+            </tr>
+            <tr>
+                <th>Closing_date</th>
+                <td>{{ job_offer.closingDate ? job_offer.closingDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ job_offer.salary }}</td>
+            </tr>
+            <tr>
+                <th>Date_de_creation</th>
+                <td>{{ job_offer.dateDeCreation ? job_offer.dateDeCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ job_offer.description }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ job_offer.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_index') }}">back to list</a>
+
+    <a href="{{ path('admin_job_offer_edit', {'id': job_offer.id}) }}">edit</a>
+
+{% endblock %}
