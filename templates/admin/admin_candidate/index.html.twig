@@ -1,0 +1,65 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Candidate index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h1>Candidate index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Gender</th>
+                <th>First_name</th>
+                <th>Last_name</th>
+                <th>Adress</th>
+                <th>Country</th>
+                <th>Nationality</th>
+                <th>Passport</th>
+                <th>Cv</th>
+                <th>Profil_picture</th>
+                {# <th>Current_location</th> #}
+                {# <th>Date_of_birth</th> #}
+                {# <th>Place_or_birth</th> #}
+                {# <th>Description</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidate in candidates %}
+            <tr>
+                <td>{{ candidate.id }}</td>
+                <td>{{ candidate.gender }}</td>
+                <td>{{ candidate.firstName }}</td>
+                <td>{{ candidate.lastName }}</td>
+                <td>{{ candidate.adress }}</td>
+                <td>{{ candidate.country }}</td>
+                <td>{{ candidate.nationality }}</td>
+                <td>{{ candidate.passport }}</td>
+                <td>{{ candidate.cv }}</td>
+                <td>{{ candidate.profilPicture }}</td>
+                {# <td>{{ candidate.currentLocation }}</td> #}
+                {# <td>{{ candidate.dateOfBirth ? candidate.dateOfBirth|date('Y-m-d') : '' }}</td> #}
+                {# <td>{{ candidate.placeOrBirth }}</td> #}
+                {# <td>{{ candidate.description }}</td> #}
+                <td>
+                    <a href="{{ path('admin_candidate_edit', {id: candidate.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_candidate_delete', {'id': candidate.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ candidate.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('admin_candidate_new') }}">Create new</a> #}
+    </div>
+{% endblock %}

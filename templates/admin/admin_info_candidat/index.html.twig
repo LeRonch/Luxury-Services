@@ -1,0 +1,46 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}InfoAdminCandidat index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h1>InfoAdminCandidat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Notes</th>
+                <th>Date_created</th>
+                <th>Date_deleted</th>
+                <th>Files</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for info_admin_candidat in info_admin_candidats %}
+            <tr>
+                <td>{{ info_admin_candidat.id }}</td>
+                <td>{{ info_admin_candidat.notes }}</td>
+                <td>{{ info_admin_candidat.dateCreated ? info_admin_candidat.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ info_admin_candidat.dateDeleted ? info_admin_candidat.dateDeleted|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ info_admin_candidat.files }}</td>
+                <td>
+                     <a href="{{ path('admin_info_candidat_edit', {id: info_admin_candidat.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_info_candidat_delete', {'id': info_admin_candidat.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ info_admin_candidat.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}

@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidature;
 use App\Entity\JobOffer;
 use App\Entity\JobType;
 use App\Form\JobOfferType;
 use App\Form\JobTypeType;
+use App\Repository\CandidatureRepository;
 use App\Repository\JobOfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,22 +58,30 @@ class JobOfferController extends AbstractController
     /**
      * @Route("/{id}", name="job_offer_show", methods={"GET"})
      */
-    public function show(JobOffer $jobOffer,JobOfferRepository $jobOfferRepository): Response
+    public function show(JobOffer $jobOffer,JobOfferRepository $jobOfferRepository,CandidatureRepository $candidatureRepository): Response
     {
+        // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $jobBefore = $jobOfferRepository->getPreviousJob($jobOffer);
         $jobAfter = $jobOfferRepository->getNextJob($jobOffer);
 
+        $idCandidate = $this->getUser()->getCandidate()->getId();
 
-        $jobrepository = $this->getDoctrine()
+        $idOffer = $jobOffer->getId();
+        $jobTypeRepository = $this->getDoctrine()
         ->getRepository(JobType::class);
-        $jobtype = $jobrepository->findOneBy(['id' => $jobOffer->getClientId()]);
+        
+        $jobType = $jobTypeRepository->findOneBy(['id' => $jobOffer->getJobTypeId()]);
 
         return $this->render('job_offer/show.html.twig', [
             'job_offer' => $jobOffer,
-            'job_type' => $jobtype,
+            'job_type' => $jobType,
             'job_previous'=> $jobBefore,
             'job_next'=> $jobAfter,
+            'candidature' => !! $candidatureRepository->findOneBy([
+                'id_offer'=> $idOffer,
+                'id_candidat'=> $idCandidate,
+            ])
         ]);
 
     }

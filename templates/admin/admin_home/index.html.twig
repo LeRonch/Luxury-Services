@@ -5,14 +5,14 @@
 {% block body %}
 <div class="container mt-4">
 <a href="{{ path('admin_index')}}">job Offers</a><br>
-<a href="{{ path('admin_info_client_index')}}">info_client</a><br>
+{# <a href="{{ path('admin_info_client_index')}}">info_client</a><br> #}
 <a href="{{ path('admin_client_index')}}">Client</a><br>
-<a href="">#</a><br>
-<a href="">#</a><br>
-<a href="">#</a><br>
-<a href="">#</a><br>
-<a href="">#</a><br>
-<a href="">#</a><br>
+<a href="{{ path('admin_candidate_index')}}">Candidat</a><br>
+<a href="{{ path('admin_experience_index')}}">experience</a><br>
+<a href="{{ path('admin_job_category_index')}}">JobCategory</a><br>
+<a href="{{ path('admin_job_type_index')}}">jobType</a><br>
+<a href="{{ path('admin_candidature_index')}}">candidature</a><br>
+<a href="{{ path('admin_info_candidat_index')}}">info Candidat</a><br>
 </div>
 
 {% endblock %}

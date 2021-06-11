@@ -53,8 +53,15 @@
                                 <li><span> Location </span>{{ job_offer.location }}</li>
                                 <li><span> Starting date </span>{{ job_offer.closingDate ? job_offer.closingDate|date('d-m-Y') : ''  }}</li>
                             </ul>
-                            <a class="btn btn-block gradient primary mt-30 waves-effect waves-light" href="#!">Apply for this job</a>
-                            <div class="btn btn-block btn-success mt-30 waves-effect waves-light disabled">You have applied for this job</div>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                    <a style="width:23.5vw; height:8vh; font-size:3rem; " class="btn gradient secondary waves-effect waves-light btn-register" href="{{ path('job_offer_edit', {'id': job_offer.id}) }}">Edit</a>
+                            {% else %}
+                                {% if candidature %}
+                                    <div class="btn btn-block btn-success mt-30 waves-effect waves-light disabled">You have applied for this job</div>
+                                {% else %}
+                                    <a class="btn btn-block gradient primary mt-30 waves-effect waves-light" href="{{ path ('candidature_new', {id:job_offer.id})}}">Apply for this job</a>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

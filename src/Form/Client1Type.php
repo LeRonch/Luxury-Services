@@ -14,7 +14,7 @@ class Client1Type extends AbstractType
         $builder
             ->add('society_name')
             ->add('activity')
-            ->add('info_admin_client_id')
+            ->add('info_admin_client_id',InfoAdminClientType::class)
         ;
     }
 

@@ -1,0 +1,28 @@
+{# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }} #}
+
+
+ {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.gender) }}</div>
+            <div class="col-md-4">{{ form_row(form.first_name) }}</div>
+              <div class="col-md-4">{{ form_row(form.last_name) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(form.adress) }}</div>
+            <div class="col-md-6">{{ form_row(form.country) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(form.nationality) }}</div>
+            <div class="col-md-6">{{ form_row(form.passport) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="select">{{ form_row(form.cv) }}</div>
+             <div class="col-md-6" id="select">{{ form_row(form.profil_picture) }}</div>
+        </div>
+             {{ form_rest(form) }}
+        <button class="btn btn-primary">{{ button|default('Enregister') }}</button>
+         {{ form_end(form) }}
+

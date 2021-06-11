@@ -1,0 +1,39 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Candidature index{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+
+    <h1>Candidature index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidature in candidatures %}
+            <tr>
+                <td>{{ candidature.id }}</td>
+                <td>
+                    <a href="{{ path('admin_candidature_edit', {id: candidature.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_candidature_delete', {'id': candidature.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ candidature.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}

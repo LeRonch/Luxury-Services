@@ -1,0 +1,14 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Edit InfoAdminCandidat{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+
+    <h1>Edit InfoAdminCandidat</h1>
+
+    {{ include('admin/admin_info_candidat/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_info_candidat_index') }}">back to list</a>
+</div>
+{% endblock %}

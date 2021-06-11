@@ -3,6 +3,8 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
+<div class="container mt-4">
+
     <h1>Client index</h1>
 
     <table class="table">
@@ -12,6 +14,11 @@
                 <th>Society_name</th>
                 <th>Activity</th>
                 <th>actions</th>
+                <th>Name</th>
+                <th>Poste</th>
+                <th>Numero</th>
+                <th>Email</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody>
@@ -20,9 +27,17 @@
                 <td>{{ client.id }}</td>
                 <td>{{ client.societyName }}</td>
                 <td>{{ client.activity }}</td>
+                <td>Name</td>
+                <td>Poste</td>
+                <td>Numero</td>
+                <td>Email</td>
+                <td>Notes</td>
                 <td>
-                    <a href="{{ path('admin_client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('admin_client_edit', {'id': client.id}) }}">edit</a>
+                     <a href="{{ path('admin_client_edit', {id: client.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('admin_client_delete', {'id': client.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');" style="display: inline-block">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ client.id) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +48,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_client_new') }}">Create new</a>
+    <div class="text-right">
+            <a href="{{ path('admin_client_new') }}" class="btn btn-primary">Créer</a>
+        </div>
+    </div>
 {% endblock %}

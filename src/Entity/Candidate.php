@@ -14,9 +14,9 @@ class Candidate
 
 
     const GENDER = [
-        0 => 'Female',
-        1 => 'Male',
-        2 => 'Transgender',
+        1 => 'Female',
+        2 => 'Male',
+        3 => 'Transgender',
     ];
 
 
@@ -347,7 +347,28 @@ class Candidate
 
         return $this;
     }
+    public function isProfileComplete()
+    {
+        return $this->getProfileCompletionPercent() === 100;
+    }
 
+    public function getProfileCompletionPercent()
+    {
+        $filledFieldCount = 0;
+        $fields = $this->toArray();
 
+        foreach($fields as $field) {
+            if (!empty($field)) {
+                $filledFieldCount++;
+            }
+        }
+
+        return $filledFieldCount * 100 / count($fields);
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getInfoAdminCandidatId();
+    }
 }
 

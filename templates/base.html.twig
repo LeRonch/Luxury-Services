@@ -151,12 +151,14 @@
                     {% endif %}
                     </ul>
                     <ul class="menuzord-menu pull-right light" role="navigation">
+                     {% if (is_granted('ROLE_ADMIN')) %}
                     <li class="active dropdown">
                             <a target="_self" href="{{ path ('admin_home')}}">
                                 <i class=""></i>
                                 <span>admin</span>
                             </a>
                         </li>
+                        {% endif %}
                         <li class="active dropdown">
                             <a target="_self" href="{{ path ('home')}}">
                                 <i class=""></i>

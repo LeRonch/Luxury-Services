@@ -19,6 +19,22 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
+    // public function FindAllWithJoin()
+    // {
+    //     $entityManager = $this->getEntityManager();
+    //     $query = $entityManager->createQuery(
+    //         'SELECT DISTINCT 
+    //             infoAdminClient,
+    //             Client
+    //         FROM 
+    //             App\Entity\Client Client
+    //         JOIN
+    //             Client.infoAdminClient_id infoAdminClient
+    //         '
+    //     );
+    //     return $query->getResult();
+    // }
+
     // /**
     //  * @return Client[] Returns an array of Client objects
     //  */

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Client;
+use App\Entity\InfoAdminClient;
 use App\Form\Client1Type;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,8 +21,10 @@ class AdminClientController extends AbstractController
      */
     public function index(ClientRepository $clientRepository): Response
     {
+        // $infoAdminClients = $clientRepository->FindAllWithJoin();
         return $this->render('admin/admin_client/index.html.twig', [
             'clients' => $clientRepository->findAll(),
+            // 'info_admin_clients' => $infoAdminClients,
         ]);
     }
 
@@ -30,6 +33,7 @@ class AdminClientController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $infoAdminClient = new InfoAdminClient();
         $client = new Client();
         $form = $this->createForm(Client1Type::class, $client);
         $form->handleRequest($request);
@@ -45,6 +49,7 @@ class AdminClientController extends AbstractController
         return $this->render('admin/admin_client/new.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
+            'info_admin_client' => $infoAdminClient
         ]);
     }
 
@@ -53,7 +58,7 @@ class AdminClientController extends AbstractController
      */
     public function show(Client $client): Response
     {
-        return $this->render('admin_client/show.html.twig', [
+        return $this->render('admin/admin_client/show.html.twig', [
             'client' => $client,
         ]);
     }
@@ -72,7 +77,7 @@ class AdminClientController extends AbstractController
             return $this->redirectToRoute('admin_client_index');
         }
 
-        return $this->render('admin_client/edit.html.twig', [
+        return $this->render('admin/admin_client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
         ]);
