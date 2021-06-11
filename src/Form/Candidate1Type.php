@@ -15,9 +15,13 @@ class Candidate1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('gender',ChoiceType::class, [
-                'choices' => $this->getChoices()
-            ])
+        ->add('gender', ChoiceType::class, [
+            'choices'  => [
+                'Male' => 'Male',
+                'Female' => 'Female',
+                'Other' => 'Other',
+            ],
+        ])
             ->add('first_name')
             ->add('last_name')
             ->add('adress')
@@ -121,13 +125,13 @@ class Candidate1Type extends AbstractType
         ]);
     }
 
-    public function getChoices()
-    {
-        $choices = Candidate::GENDER;
-        $output = [];
-        foreach($choices as $k => $v) {
-            $output[$v] = $k;
-        }
-        return $output;
-    }
+    // public function getChoices()
+    // {
+    //     $choices = Candidate::GENDER;
+    //     $output = [];
+    //     foreach($choices as $k => $v) {
+    //         $output[$v] = $k;
+    //     }
+    //     return $output;
+    // }
 }
