@@ -107,7 +107,7 @@ class Candidate
 
     /**
      * @ORM\OneToOne(targetEntity=JobCategory::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     private $job_category_id;
 

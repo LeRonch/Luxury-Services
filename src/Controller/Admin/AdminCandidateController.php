@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Candidate;
 use App\Form\Candidate1Type;
 use App\Repository\CandidateRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,8 +101,12 @@ class AdminCandidateController extends AbstractController
      */
     public function delete(Request $request, Candidate $candidate): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$candidate->getId(), $request->request->get('_token'))) {
+            $infoAdminCandidat = $candidate->getInfoAdminCandidatId();
+            $infoAdminCandidat->setDateDeleted(new DateTime());
             $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($infoAdminCandidat);
+            $entityManager->flush();
+            if ($this->isCsrfTokenValid('delete'.$candidate->getId(), $request->request->get('_token'))) {
             $entityManager->remove($candidate);
             $entityManager->flush();
         }

@@ -24,7 +24,7 @@ class JobOffer
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class)
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $client_id;
 
@@ -66,7 +66,6 @@ class JobOffer
 
     /**
      * @ORM\ManyToOne(targetEntity=JobCategory::class, cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $job_category_id;
 

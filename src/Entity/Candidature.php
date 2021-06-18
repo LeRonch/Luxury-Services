@@ -19,12 +19,13 @@ class Candidature
 
     /**
      * @ORM\ManyToOne(targetEntity=JobOffer::class, cascade={"remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $id_offer;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidate::class, cascade={"remove"})
+     * * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $id_candidat;
 
