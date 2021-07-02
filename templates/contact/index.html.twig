@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ContactController!{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
+
 <div class="base">
 
     <!-- Page -->
@@ -16,7 +17,7 @@
                         <h2 class="white-text">Feel free to contact us</h2>
                         <span class="white-text">for any questions or demands</span>
                         <ol class="breadcrumb">
-                            <li><a href="#!">Home</a></li>
+                            <li><a href="{{ path ('home')}}">Home</a></li>
                             <li class="active">Contact</li>
                         </ol>
                     </div>
@@ -109,9 +110,12 @@
                 </div>
             </section>
         </form>
-        <div id="myMap" class="height-350"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11079.270083647003!2d4.068187188854968!3d46.034789514194465!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xdfb2587bf07da8cd!2sSimplon%20Roanne!5e0!3m2!1sfr!2sfr!4v1622731036913!5m2!1sfr!2sfr" width="1300" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+        <div id="myMap" class="height-350">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2769.8354408467885!2d4.070504615576663!3d46.0344319791119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f40f5ddd15c065%3A0xdfb2587bf07da8cd!2sSimplon%20Roanne!5e0!3m2!1sfr!2sfr!4v1622618674006!5m2!1sfr!2sfr" width="1300" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
 
     </div>
 
 </div>
+
 {% endblock %}

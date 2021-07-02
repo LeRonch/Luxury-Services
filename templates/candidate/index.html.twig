@@ -10,7 +10,6 @@
             <tr>
                 <th>Id</th>
                 <th>Gender</th>
-                <th>actions</th>
                 <th>First_name</th>
                 <th>Last_name</th>
                 <th>Adress</th>
@@ -23,17 +22,17 @@
                 <th>Date_of_birth</th>
                 <th>Place_or_birth</th>
                 <th>Description</th>
-                
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for candidate in candidates %}
             <tr>
                 <td>{{ candidate.id }}</td>
-                <td>{{ candidate.gender ? 'Yes' : 'No' }}</td> 
+                <td>{{ candidate.gender ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('candidate_show', {'id': candidate.id}) }}">show</a>
                     <a href="{{ path('candidate_edit', {'id': candidate.id}) }}">edit</a>
+                    <a href="{{ path('candidate_show', {'id': candidate.id}) }}">show</a>
                 </td>
                 <td>{{ candidate.firstName }}</td>
                 <td>{{ candidate.lastName }}</td>
@@ -47,7 +46,7 @@
                 <td>{{ candidate.dateOfBirth ? candidate.dateOfBirth|date('Y-m-d') : '' }}</td>
                 <td>{{ candidate.placeOrBirth }}</td>
                 <td>{{ candidate.description }}</td>
-               
+                
             </tr>
         {% else %}
             <tr>
@@ -57,5 +56,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('candidate_new') }}">Create new</a>
 {% endblock %}

@@ -78,9 +78,6 @@ class CandidateController extends AbstractController
         $form = $this->createForm(CandidateType::class, $candidate);
         $form->handleRequest($request);
 
-      
-
-
         $dataCandidate = $candidate->toArray();
         $dataLength = count($dataCandidate);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -126,7 +123,7 @@ class CandidateController extends AbstractController
         return $this->render('candidate/edit.html.twig', [
             'candidate' => $candidate,
             'form' => $form->createView(),
-           'dataCandidate' => $dataCandidate,
+            'dataCandidate' => $dataCandidate,
             'dataLength' => $dataLength,
         ]);
     }

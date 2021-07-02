@@ -104,13 +104,14 @@ class CandidateType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
-                        'maxSize' => '5000k',
+                        'maxSize' => '8000k',
                         'mimeTypes' => [
                             'image/png',
                             'application/x-pdf',
                             'application/pdf',
                             'image/jpg',
                             'image/gif',
+                            'image/png',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])

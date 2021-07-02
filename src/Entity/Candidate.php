@@ -11,16 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Candidate
 {
 
-
-
-    // const GENDER = [
-    //     1 => 'Female',
-    //     2 => 'Male',
-    //     3 => 'Transgender',
-    // ];
-
-
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -103,7 +103,7 @@
 					</div>
 
 					<div class="existing-file">
-						<a href="{{ asset('upload/profil/' ~ candidate.profilPicture) }}" target="_blank">
+						<a href="{{ asset('uploads/profil/' ~ candidate.profilPicture) }}" target="_blank">
 							<i class="material-icons">&#xE24D;</i>
 							profil_picture.png</a>
 					</div>
@@ -151,7 +151,7 @@
 							{{ form_widget(form.passport) }}
 						</div>
 						<div class="existing-file">
-							<a href="{{ asset('upload/passport/' ~ candidate.passport) }}" target="_blank">
+							<a href="{{ asset('uploads/passport/' ~ candidate.passport) }}" target="_blank">
 								<i class="material-icons">&#xE24D;</i>
 								passeport.png</a>
 						</div>
@@ -169,7 +169,7 @@
 						</div>
 
 						<div class="existing-file">
-							<a href="{{ asset('upload/cv/' ~ candidate.cv) }}" target="_blank">
+							<a href="{{ asset('uploads/cv/' ~ candidate.cv) }}" target="_blank">
 								<i class="material-icons">&#xE24D;</i>
 								CV.pdf</a>
 						</div>
@@ -229,8 +229,7 @@
 			<div class="col-xs-12 col-sm-4">
 				<div class="input-field">
 					{{ form_widget(form.user_id.plainPassword.first, {
-						'attr': {'id': 'password', 
-								'required': ''}
+						'attr': {'id': 'password'}
                     }) }}
 					{{ form_errors(form.user_id.plainPassword.first) }}
 					{{ form_label(form.user_id.plainPassword.first, 'New password') }}
@@ -239,8 +238,7 @@
 			<div class="col-xs-12 col-sm-4">
 				<div class="input-field">
 					{{ form_widget(form.user_id.plainPassword.second, {
-						'attr': {'id': 'password', 
-								'required': ''}
+						'attr': {'id': 'password'}
                     }) }}
 					{{ form_errors(form.user_id.plainPassword.second) }}
 					{{ form_label(form.user_id.plainPassword.first, 'Confirm you new Password') }}
